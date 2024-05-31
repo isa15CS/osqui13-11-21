@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osqui</title>
+    <!-- Incluye las fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff; /* Fondo blanco */
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #4b0082; /* Color del encabezado */
+            color: white;
+        }
+        header h1 {
+            margin: 0;
+            font-family: 'Dancing Script', cursive; /* Aplica la fuente de caligrafía */
+            font-size: 96px; /* Aumenta el tamaño de la letra */
+            font-weight: 400; /* Reduce el grosor de la letra */
+        }
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+        nav button {
+            background-color: #4b0082; /* Color del fondo del botón igual al del encabezado */
+            border: none;
+            color: white; /* Color del texto del botón */
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        nav button:hover {
+            background-color: #6a0dad; /* Cambia el color del botón al pasar el cursor */
+        }
+        .initial-text {
+            margin: 40px 20px;
+            font-size: 28px; /* Aumenta el tamaño de la letra */
+            font-family: 'Dancing Script', cursive; /* Cambia la fuente a una cursiva delgada */
+            font-weight: 400; /* Reduce el grosor de la letra */
+            color: #000000; /* Cambia el color del texto a negro */
+            text-align: center;
+        }
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px;
+        }
+        .image-gallery img {
+            width: 22%; /* Ajusta el ancho de las imágenes para que quepan cuatro por fila */
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .secondary-text {
+            margin: 20px 20px;
+            font-size: 26px; /* Aumenta el tamaño de la letra */
+            font-family: 'Dancing Script', cursive; /* Cambia la fuente a una cursiva delgada */
+            font-weight: 400; /* Reduce el grosor de la letra */
+            color: #000000; /* Cambia el color del texto a negro */
+            text-align: center;
+        }
+        .gallery-description {
+            font-size: 24px; /* Ajusta el tamaño de la letra */
+            font-family: 'Dancing Script', cursive; /* Aplica la fuente cursiva */
+            font-weight: 400; /* Reduce el grosor de la letra */
+            color: #d36ac2; /* Color rosa pastel más oscuro */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .content {
+            display: none;
+            margin: 20px;
+            text-align: center;
+        }
+        .content.active {
+            display: block;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #4b0082;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><a href="#" onclick="showHomePage()" style="color: white; text-decoration: none;">Osqui</a></h1>
+        <nav>
+            <button onclick="showHomePage()">Inicio</button>
+            <button onclick="showContent('historia')">Nuestra Historia</button>
+            <button onclick="showContent('galeria')">Galería</button>
+            <button onclick="showContent('canciones')">Canciones</button>
+        </nav>
+    </header>
+    <hr>
+
+    <div id="home">
+        <p id="initial-text" class="initial-text">Para el amor de mi vida, te amo con todo mi corazón. -Isabella C.</p>
+        <div class="image-gallery">
+            <img src="imagen1.jpg" alt="Imagen 1">
+            <img src="imagen2.jpg" alt="Imagen 2">
+            <img src="imagen3.jpg" alt="Imagen 3">
+        </div>
+        <p class="secondary-text">Compartir la vida contigo ha sido la aventura más bonita que he tenido</p>
+    </div>
+
+    <div id="galeria" class="content">
+        <h2>Galería</h2>
+        <p class="gallery-description">Por más aventuras juntos...</p>
+        <div class="image-gallery">
+            <img src="parque1.jpg" alt="Imagen 1">
+            <img src="parque2.jpg" alt="Imagen 2">
+            <img src="parque3.jpg" alt="Imagen 3">
+            <img src="parque4.jpg" alt="Imagen 4">
+            <img src="imagen5.jpg" alt="Imagen 5">
+            <img src="imagen6.jpg" alt="Imagen 6">
+            <img src="imagen7.jpg" alt="Imagen 7">
+            <img src="imagen8.jpg" alt="Imagen 8">
+            <img src="imagen9.jpg" alt="Imagen 9">
+            <img src="imagen10.jpg" alt="Imagen 10">
+        </div>
+    </div>
+
+    <div id="historia" class="content">
+        <h2>Nuestra Historia</h2>
+        <p>Este es el texto de nuestra historia...</p>
+    </div>
+
+    <div id="canciones" class="content">
+        <h2>Canciones</h2>
+        <ul>
+            <li>Canción 1</li>
+            <li>Canción 2</li>
+        </ul>
+    </div>
+
+    <script>
+        function showContent(sectionId) {
+            var contents = document.getElementsByClassName('content');
+            var home = document.getElementById('home');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            document.getElementById(sectionId).classList.add('active');
+            if (home) {
+                home.style.display = 'none';
+            }
+        }
+
+        function showHomePage() {
+            var contents = document.getElementsByClassName('content');
+            var home = document.getElementById('home');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            if (home) {
+                home.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
